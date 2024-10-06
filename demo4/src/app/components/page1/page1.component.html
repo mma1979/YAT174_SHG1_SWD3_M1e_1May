@@ -1,0 +1,75 @@
+<h1>{{ title }}</h1>
+<p>
+  - {{data.nid}} <br/>
+  - {{data.name}}
+</p>
+<div [innerHTML]="html"></div>
+<input type="text" [value]="title"> <br>
+
+<button type="button" (click)="sayHello()">Say Hello</button>
+
+<br>
+
+<input type="text" [(ngModel)]="name"/>
+<h3>{{ name }}</h3>
+
+<!-- <input type="text" [value]="name" nam="name" (change)="name = name.value"/> -->
+
+<br> 
+<br>
+
+<select [(ngModel)]="selectedType" (change)="sendValueToParent()">
+  <option [value]="t" *ngFor="let t of types">{{t}}</option>
+</select> <br>
+
+<select [(ngModel)]="selectedType">
+ @for(t of types; track t){
+  <option [value]="t">{{t}}</option>
+ }
+</select> <br>
+
+<input [type]="selectedType" [ngClass]="{'email': selectedType=='email', 'text': selectedType=='text'}" /> 
+
+
+<h1 *ngIf="selectedType=='tel' || selectedType =='email'">{{ selectedType }}</h1>
+ 
+@if(selectedType=='tel' || selectedType =='email'){
+  <h1 >{{ selectedType }}</h1>
+}
+
+<br>========================================================================<br>
+
+<select [(ngModel)]="fontSize">
+  <option value="null">Select Font Size</option>
+  @for(fs of [10,15,20,25]; track fs){
+    <option [value]="fs">{{fs}} px</option>
+  }
+</select>
+
+<div [ngStyle]="{'font-size': fontSize+'px'}">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, voluptas! Enim minus soluta eaque vitae neque, nobis esse odio nesciunt similique, aliquam omnis commodi molestias consequuntur culpa deserunt magnam ad.
+</div>
+
+<br>========================================================================<br>
+
+<div [ngSwitch]="selectedType">
+  <p *ngSwitchCase="'email'">I am Email Input</p>
+  <p *ngSwitchCase="'tel'">I am Tel Input</p>
+  <p *ngSwitchCase="'number'">I am Number Input</p>
+  <p *ngSwitchDefault="">I am Email Text</p>
+</div>
+
+@switch (selectedType) {
+  @case ('email'){
+  <p>I am Email Input</p>
+  }
+  @case ('tel'){
+    <p>I am Tel Input</p>
+  }
+  @case ('number') {
+    <p>I am Number Input</p>
+  }
+  @default {
+    <p>I am Email Text</p>
+  }
+}

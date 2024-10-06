@@ -1,0 +1,14 @@
+<header>
+  <a [routerLink]="['/']">Home</a> | 
+  <a [routerLink]="['/page1']">Page</a> | 
+  <a [routerLink]="['/products', '1']">Product 1</a> | 
+  <a [routerLink]="['/products', '2']">Product 2</a> | 
+  <a [routerLink]="['/products', '3']">Product 3</a> | 
+  <a [routerLink]="['/products', myProdcutId]">Product {{myProdcutId}}</a> | 
+</header>
+
+<router-outlet/>
+
+<footer>
+  footer
+</footer>
