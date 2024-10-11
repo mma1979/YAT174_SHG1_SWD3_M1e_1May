@@ -1,10 +1,14 @@
 <mat-card>
     <mat-card-header>
-        <h1> My Todos</h1>
+        <h1> My Todos ({{count}})</h1>
+        <button (click)="readDataFromSerer()">Read From Server</button>
     </mat-card-header>
     <mat-card-content>
         <app-add-todo (onItemAdd)="itemAdded($event)"></app-add-todo>
-        <app-list-todos [items]="myItems"></app-list-todos>
+        <app-list-todos [items]="myItems" 
+        (onItemComplete)="completeItem($event)"
+        (onItemRemove)="removeItem($event)"
+        ></app-list-todos>
     </mat-card-content>
     <mat-card-footer>
 

@@ -1,11 +1,11 @@
 @if(items.length > 0){
 <ul>
     @for(item of items; track item.id){
-    <li>
+    <li [ngClass] = "{'completed': item.isCompleted}">
         <span>{{ item.description }}</span>
         <div class="buttons">
-<button class="btn btn-success"> Completed</button>
-<button class="btn btn-danger"> Remove </button>
+<button class="btn btn-success" (click)="setCompleted(item)"> Completed</button>
+<button class="btn btn-danger"  (click)="remove(item)"> Remove </button>
         </div>
     </li>
     }

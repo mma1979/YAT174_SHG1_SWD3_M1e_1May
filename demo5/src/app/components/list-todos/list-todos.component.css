@@ -5,3 +5,7 @@
 .buttons button{
     margin: 3px;;
 }
+
+.completed{
+    background-color: lightgreen;
+}
