@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+        <h1> My Todos</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <app-add-todo (onItemAdd)="itemAdded($event)"></app-add-todo>
+        <app-list-todos [items]="myItems"></app-list-todos>
+    </mat-card-content>
+    <mat-card-footer>
+
+    </mat-card-footer>
+</mat-card>

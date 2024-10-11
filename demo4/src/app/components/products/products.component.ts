@@ -10,19 +10,19 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent {
 
-  constructor(private route: ActivatedRoute){
+  // constructor(private route: ActivatedRoute){
 
-  }
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(p => this.productId = <number> (p.get('id') || 0))
-  }
+  // }
+  // ngOnInit(): void {
+  //   this.route.paramMap.subscribe(p => this.productId = <number> (p.get('id') || 0))
+  // }
 
   productId: number = 0;
 
-  // @Input()
-  // set id(pid: number) { 
-  //   this.productId = pid
-  // }
+  @Input()
+  set id(pid: number) { 
+    this.productId = pid
+  }
 }

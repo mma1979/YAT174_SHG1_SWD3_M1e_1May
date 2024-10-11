@@ -1,0 +1,15 @@
+@if(items.length > 0){
+<ul>
+    @for(item of items; track item.id){
+    <li>
+        <span>{{ item.description }}</span>
+        <div class="buttons">
+<button class="btn btn-success"> Completed</button>
+<button class="btn btn-danger"> Remove </button>
+        </div>
+    </li>
+    }
+</ul>
+}@else {
+<h3> You Do not have anty Tasks</h3>
+}
