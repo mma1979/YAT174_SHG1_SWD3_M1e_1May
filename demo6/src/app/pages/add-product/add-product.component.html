@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="save(form)">
+    <div class="form-group">
+        <label for="">Product Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" [(ngModel)]="newProduct.name" name="name" #name  required="true" minlength="4"/>
+        <div class="text-danger" *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+            <span *ngIf="form.controls['name'].errors?.['required']">naame is required</span>
+            <span *ngIf="form.controls['name'].errors?.['minlength']">name must not be less than 4 charcter</span>
+        </div>
+    </div>
+    <div class="formg-roup">
+        <label for="">Price <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" [(ngModel)]="newProduct.price" name="price" #price required="true" min="1"/>
+        <div class="text-danger" *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)">
+            <span *ngIf="form.controls['price'].errors?.['required']">price is required</span>
+            <span *ngIf="form.controls['price'].errors?.['min']">price must be greater than ZERO</span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save Product</button>
+    <button type="button" class="btn btn-info" (click)="backToProducts()">Cancle and Back</button>
+</form>
+
+<p>
+    {{form.hasError| json}}
+</p>
