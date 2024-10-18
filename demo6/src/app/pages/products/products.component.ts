@@ -11,17 +11,18 @@ import { RouterModule } from '@angular/router';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
+
   products: Product[] = []
 
-  constructor(private productService : ProductServiceService){}
+  constructor(private productService: ProductServiceService) { }
 
-  loadData(){
+  loadData() {
     this.productService.getAllProducts().subscribe({
-      next: data=>{
+      next: data => {
         this.products = data;
         console.table(data)
       },
-      error: err=>{
+      error: err => {
         console.log(err);
       }
     })
@@ -29,5 +30,20 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  deleteProduct(productId: number) {
+
+    let confirmed: boolean = confirm("are you sure?")
+    if (confirmed) {
+      this.productService.deleteProduct(productId).subscribe({
+        next: _ =>{
+          this.loadData()
+        },
+        error: err=>{
+          console.log(err)
+        }
+      })
+    }
   }
 }

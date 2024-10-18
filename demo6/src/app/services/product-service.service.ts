@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../mdels/product';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
 
-  baseUrl = 'https://localhost:44391'
+ 
 
   constructor(private http : HttpClient) { }
 
@@ -16,23 +17,23 @@ export class ProductServiceService {
   // GET, POST, PUT, DELET (Read, Create, Update, Delete) => http methods or http verbs
 
   getAllProducts() : Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`)
+    return this.http.get<Product[]>(`${environment.baseUrl}/products`)
 
   }
 
   getProductById(productId : number) : Observable<Product>{
-    return this.http.get<Product>(`${this.baseUrl}/products/${productId}`)
+    return this.http.get<Product>(`${environment.baseUrl}/products/${productId}`)
   }
 
   createProduct(newProduct : Product) : Observable<Product>{
-    return this.http.post<Product>(`${this.baseUrl}/products`, newProduct)
+    return this.http.post<Product>(`${environment.baseUrl}/products`, newProduct)
   }
 
   updateProduct(productId:number, modifiedProduct: Product): Observable<Product>{
-    return this.http.put<Product>(`${this.baseUrl}/products/${productId}`, modifiedProduct)
+    return this.http.put<Product>(`${environment.baseUrl}/products/${productId}`, modifiedProduct)
   }
 
   deleteProduct(productId : number) : Observable<Product>{
-    return this.http.delete<Product>(`${this.baseUrl}/products/${productId}`)
+    return this.http.delete<Product>(`${environment.baseUrl}/products/${productId}`)
   }
 }
