@@ -19,7 +19,10 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
 
-        <button class="btn btn-outline-success" type="button" (click)="logout()" *ngIf="isAuth">LogOut</button>
+        <button class="btn btn-outline-success" type="button" (click)="logout()" *ngIf="isAuth">{{ 'header.logout' | translate | async }}</button>
+
+        <button class="btn btn-outline-success" type="button" (click)="toggleLanguage()">{{lang}}</button>
+
       </div>
     </div>
   </nav>

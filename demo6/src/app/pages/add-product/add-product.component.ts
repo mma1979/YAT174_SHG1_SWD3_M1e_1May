@@ -25,9 +25,12 @@ if(form.invalid){
 
 this.productService.createProduct(this.newProduct).subscribe({
   next: data=>{
-    this.router.navigate(['/products'])
+    // this.router.navigate(['/products'])
   },
   error: err=>{
+    if(err.status == 401){
+      window.location.href = "/login"
+    }
     alert("can not add your product, try again later.")
     console.log(err)
   }

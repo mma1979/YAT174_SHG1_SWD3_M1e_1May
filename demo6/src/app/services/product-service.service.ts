@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../mdels/product';
 import { Observable } from 'rxjs';
@@ -26,6 +26,7 @@ export class ProductServiceService {
   }
 
   createProduct(newProduct : Product) : Observable<Product>{
+   
     return this.http.post<Product>(`${environment.baseUrl}/products`, newProduct)
   }
 
